@@ -15,12 +15,12 @@ function startGame(){
   startButton.setAttribute("disabled", "true")
   inflateButton.removeAttribute("disabled")
   startClock()
-
   setTimeout(stopGame, gameLength)
 }
 
 function startClock(){
   timeRemaining = gameLength
+  drawClock()
   clockID = setInterval(drawClock, 1000)
 }
 
@@ -30,8 +30,8 @@ function stopClock(){
 
 function drawClock(){
   let countdownElem = document.getElementById('countdown')
-  timeRemaining -= 1000
   countdownElem.innerText = (timeRemaining / 1000).toString()
+  timeRemaining -= 1000
 }
 
 
@@ -59,6 +59,8 @@ function draw(){
   
   clickCountElem.innerText = clickCount.toString()
   popCountElem.innerText = popCount.toString()
+
+  
 }
 
 function stopGame(){
@@ -70,8 +72,6 @@ function stopGame(){
   clickCount = 0
   height = 120
   width = 100
-
-  stopGame()
 
   draw()
 }
