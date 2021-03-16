@@ -30,8 +30,8 @@ function stopClock(){
 
 function drawClock(){
   let countdownElem = document.getElementById('countdown')
+  timeRemai ning -= 1000
   countdownElem.innerText = (timeRemaining / 1000).toString()
-  timeRemaining -= 1000
 }
 
 
