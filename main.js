@@ -67,7 +67,7 @@ function draw(){
   
   clickCountElem.innerText = clickCount.toString()
   popCountElem.innerText = currentPopCount.toString()
-  highPopCountElem.innerText = highestPopCount.toString()
+  highPopCountElem.innerText = currentPlayer.highScore.toString()
   
 }
 
@@ -81,8 +81,9 @@ function stopGame(){
   height = 120
   width = 100
 
-  if(currentPopCount > highestPopCount){
-    highestPopCount = currentPopCount
+  if(currentPopCount > currentPlayer.highScore){
+    currentPlayer.highScore = currentPopCount
+    savePlayers()
   }
 
   currentPopCount = 0
@@ -110,6 +111,14 @@ if(!currentPlayer){
 }
 
 form.reset()
+document.getElementById("game").classList.remove("hidden")
+form.classList.add("hidden")
+draw()
+}
+
+function changePlayer(){
+  document.getElementById("player-form").classList.remove("hidden")
+  document.getElementById("game").classList.add("hidden")
 }
 
 function savePlayers(){
